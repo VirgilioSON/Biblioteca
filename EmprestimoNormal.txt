@@ -1,0 +1,16 @@
+jp
+livro a
+8
+/
+rafael
+livro z
+60
+/
+virgilio
+livro c
+9
+*
+mane
+livro f
+28
+*
