@@ -29,7 +29,7 @@ void ClienteNormal::AdicionaEmprestimo(Emprestimo emp, int data){
         emprestimo = emp;
 }
 
-void ClienteNormal::setEmp(Emprestimo emp){
+void ClienteNormal::setEmp(Emprestimo emp, int op){
     emprestimo = emp;
 }
 
@@ -92,8 +92,9 @@ int ClienteNormal::ExcluirEmprestimo(std::string procuraL, std::string procuraN)
     getchar();
 
     if(op == 2)
-        return 2;
-    return 1;
+        return 4;
+
+    return 5;
 }
 
 bool ClienteNormal::AlterarEmprestimo(std::string procuraL, std::string procuraN){

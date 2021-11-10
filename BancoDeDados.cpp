@@ -28,15 +28,17 @@ std::string BancoDeDados::entregaLivro(std::string livro){
     }while(!arq.eof());
     arq.close();
 
-    for(int i = 0; i < lAchou.size()-1; i++){
-        for(int j = i+1; j < lAchou.size(); j++){
-            if(lAchou[i] == lAchou[j])
-                lAchou.erase(lAchou.begin()+j);
+    if(lAchou.size() > 0){
+        for(int i = 0; i < lAchou.size()-1; i++){
+            for(int j = i+1; j < lAchou.size(); j++){
+                if(lAchou[i] == lAchou[j])
+                    lAchou.erase(lAchou.begin()+j);
+            }
         }
     }
 
     if(lAchou.size() == 1){
-        std::cout << "\nDeseja mesmo " << lAchou[0] << " ?" << std::endl
+        std::cout << "\nDeseja mesmo " << lAchou[0] << "?" << std::endl
                   << "1 - Sim" << std::endl
                   << "2 - Não" << std::endl;
         std::cin >> op;
@@ -68,7 +70,6 @@ std::string BancoDeDados::entregaLivro(std::string livro){
     //não achou
     }else{
         std::cout << "\n*****Nenhum livro foi encontrado*****\n" << std::endl;
-        system("pause");
         return "oi";
     }
 

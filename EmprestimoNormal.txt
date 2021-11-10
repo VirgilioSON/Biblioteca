@@ -2,15 +2,23 @@ jp
 livro a
 8
 /
-rafael
-livro z
+jonas
+O Alienista
+60
+O Cortico
+cleiton
+O Alienista
+60
+O Cortico
+leonardo
+O Cortico
 60
 /
-virgilio
-livro c
-9
-*
-mane
-livro f
-28
+renato
+Odisseia
+60
+O Alienista
+joel
+O Cortico
+30
 *

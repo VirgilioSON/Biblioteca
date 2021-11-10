@@ -31,8 +31,11 @@ void ClienteVip::AdicionaEmprestimo(Emprestimo emp, int data){
         }
 }
 
-void ClienteVip::setEmp(Emprestimo emp){
-    emprestimos[0] = emp;
+void ClienteVip::setEmp(Emprestimo emp, int op){
+    if(op == 1)
+        emprestimos[0] = emp;
+    if(op == 2)
+        emprestimos[1] = emp;
 }
 
 Emprestimo ClienteVip::getEmp(int op){
@@ -53,8 +56,10 @@ void ClienteVip::MostrarLista(){
         std::cout << std::endl;
         std::cout << "Nome: " << emprestimos[0].getNomes() << std::endl;
         std::cout << "Livro(s): " << std::endl;
-        std::cout << "  " + emprestimos[0].getLivros() << std::endl;
-        if(emprestimos.size() == 2 && emprestimos[1].getLivros() != "/")
+
+        if(emprestimos[0].getLivros() != "/")
+            std::cout << "  " + emprestimos[0].getLivros() << std::endl;
+        if(emprestimos[1].getLivros() != "/")
             std::cout << "  " + emprestimos[1].getLivros() << std::endl;
 
         if(emprestimos[0].getPrazo() >= 0){
@@ -72,6 +77,9 @@ void ClienteVip::MostrarLista(){
 int ClienteVip::ExcluirEmprestimo(std::string procuraL, std::string procuraN){
     setlocale(LC_ALL, "Portuguese");
 
+    if(emprestimos[0].getLivros() == "/" && emprestimos[1].getLivros() == "/")
+        return 1;
+
     for(int i = 0; i < emprestimos.size(); i++){
         if(emprestimos[i].getNomes().find(procuraN) != std::string::npos && emprestimos[i].getLivros().find(procuraL) != std::string::npos){
             std::cout << std::endl;
@@ -86,28 +94,33 @@ int ClienteVip::ExcluirEmprestimo(std::string procuraL, std::string procuraN){
                 std::cout << "Prazo de devolução expirado a " << emprestimos[i].getPrazo() * (-1) << " dia(s)" << std::endl;
                 std::cout << "Multa a ser paga: R$" << emprestimos[i].getPrazo() * (-1) * 2.0 << std::endl;
             }
-                std::cout << "Deseja realmente excluir esse empréstimo?\n"
-                            "1 - Sim\n"
-                            "2 - Não" << std::endl;
+            std::cout << "Emprestimo 0: " << emprestimos[0].getLivros() << std::endl;
+            std::cout << "Emprestimo 1: " << emprestimos[1].getLivros() << std::endl;
+            std::cout << "Deseja realmente excluir esse empréstimo?\n"
+                         "1 - Sim\n"
+                         "2 - Não" << std::endl;
             int op = 0;
             std::cin >> op;
             getchar();
 
             if(op == 2)
-                return 2;
+                return 4;
             else{
-                if(i != 1)
-                    emprestimos.erase(emprestimos.begin()+i);
-                else
-                    emprestimos[1].setLivros("/");
+                if(i != 1){
+                   // emprestimos.erase(emprestimos.begin()+i);
+                    return 3;
+                }
+                //else
+                   // emprestimos[1].setLivros("/");
 
-                if(emprestimos.size() == 0 || emprestimos[0].getLivros() == "/")
+                if(emprestimos[0].getLivros() == "/" && emprestimos[1].getLivros() == "/")
                     return 1;
                 else
                     return 2;
             }
         }
     }
+
 
     return 0;
 }

@@ -9,7 +9,7 @@ class Clientes
 
         virtual bool getVip() = 0;
         virtual void AdicionaEmprestimo(Emprestimo emp, int data) = 0;
-        virtual void setEmp(Emprestimo emp) = 0;
+        virtual void setEmp(Emprestimo emp, int op) = 0;
         virtual Emprestimo getEmp(int op) = 0;
         virtual void AtualizaPrazo() = 0;
         virtual void MostrarLista() = 0;

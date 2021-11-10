@@ -11,7 +11,7 @@ class ClienteVip:public Clientes
 
         bool getVip();
         void AdicionaEmprestimo(Emprestimo emp, int data);
-        void setEmp(Emprestimo emp);
+        void setEmp(Emprestimo emp, int op);
         Emprestimo getEmp(int op);
         void AtualizaPrazo();
         void MostrarLista();

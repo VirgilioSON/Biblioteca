@@ -21,7 +21,7 @@ void Clientes::AdicionaEmprestimo(Emprestimo emp, int data){
 
 }
 
-void Clientes::setEmp(Emprestimo emp){
+void Clientes::setEmp(Emprestimo emp, int op){
 
 }
 

@@ -7,7 +7,7 @@
 class BancoDeDados{
     public:
         BancoDeDados();
-        ///a fazer
+
         std::string entregaLivro(std::string livro);
         void devolveLivro(std::string livro);
 
